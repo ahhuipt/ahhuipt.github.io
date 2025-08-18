@@ -1,5 +1,8 @@
-source 'https://rubygems.org'
-gem 'jekyll'
-gem 'redcarpet'
-gem 'jekyll-paginate'
-gem 'jekyll-sitemap'
+# source "https://rubygems.org"
+source "https://gems.ruby-china.com"
+
+gem "jekyll", "~> 4.4.1"
+gem "jekyll-paginate"
+gem "jekyll-sitemap"
+gem "logger", "~> 1.5"
+gem "wdm", ">= 0.1.0" if Gem.win_platform?
