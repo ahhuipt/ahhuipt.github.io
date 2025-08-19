@@ -22,7 +22,7 @@ const req = https.request(options, bing_res => {
       img_url.push(img.url);
     });
     var jsonpStr = "getBingImages(" + JSON.stringify(img_url) + ")";
-    fs.writeFile('./assets/json/images.json', jsonpStr, (err) => {
+    fs.writeFile('./json/images.json', jsonpStr, (err) => {
       if (err) {
         throw err;
       }
