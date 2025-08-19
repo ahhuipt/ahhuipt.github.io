@@ -59,13 +59,13 @@ comment:
 # --------------------------------------
 # Baidu Analytics
 # 使用博客模板请去掉或者更换 id 
-baidu:
-    id: 82a023515c1f80d3aba104b74def44c3
+# baidu:
+#     id: 82a023515c1f80d3aba104b74def44c3
 # Google Analytics
 # 使用博客模板请去掉或者更换 id
-ga:
-    id: UA-84134159-3  
-    host: auto  
+# ga:
+#     id: UA-84134159-3  
+#     host: auto  
 
 # busuanzi:
 #   site_id: your-site-id
