@@ -32,6 +32,28 @@ nav:
     - {title: 关于我, description: about, url: '/about'}   
 
 
+# Article search
+# --------------------------------------
+# Algolia 搜索配置
+algolia:
+  application_id: 'D7WUADB45G'  # 替换为您的 Application ID
+  index_name: ahhuipt_github_io  # 自定义索引名称
+  search_only_api_key: '218a8d650b6d7586d0fda54456a46be3'  # 替换为您的 Search-only API Key
+  files:
+    - _site/**/*.html
+  settings:
+    attributesToIndex:
+      - title
+      - content
+    attributesForFaceting:
+      - tags
+      - categories
+  external:
+    index_dir: .algolia
+  # 可选：自定义索引内容
+  excerpt_separator: "<!-- more -->"
+  max_content_size: 10000
+
 # Social
 # --------------------------------------
 social:
@@ -76,6 +98,7 @@ comment:
 plugins:
   - jekyll-paginate
   - jekyll-sitemap
+  - jekyll-algolia
 
 # 分页设置
 paginate: 20
