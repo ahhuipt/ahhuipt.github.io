@@ -67,6 +67,8 @@ ga:
     id: UA-84134159-3  
     host: auto  
 
+# busuanzi:
+#   site_id: your-site-id
 
 # 启用的 Jekyll 插件  
 # --------------------------------------
