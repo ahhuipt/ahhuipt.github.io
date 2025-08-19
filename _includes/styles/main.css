@@ -1,180 +1,160 @@
-
+/* 重置基础样式 */
 html {
     font-family: sans-serif;
     -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%
+    -webkit-text-size-adjust: 100%;
 }
 
 body {
-margin: 0
+    margin: 0;
 }
 
-.ih-item.circle.effect {
-    margin-left: 400px;
-    -webkit-perspective: 900px;
-    -moz-perspective: 900px;
-perspective: 900px;
+/* 圆形头像容器 */
+.ih-item.circle {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
 }
+
+/* 3D 翻转效果 */
+.ih-item.circle.effect {
+    margin: 0 auto;
+    /* 居中显示，替代固定的 margin-left */
+    perspective: 900px;
+}
+
 .ih-item.circle.effect .img {
+    position: relative;
     z-index: 11;
-    -webkit-transition: all 0.5s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
-transition: all 0.5s ease-in-out;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    transition: all 0.5s ease-in-out;
+}
+
+.ih-item.circle.effect .img:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 16px rgba(255, 255, 255, 0.6), 0 1px 2px rgba(0, 0, 0, 0.3);
+    transition: all 0.35s ease-in-out;
+}
+
+.ih-item.circle.effect .img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    display: block;
 }
 
 .ih-item.circle.effect .info {
-    -webkit-transform-style: preserve-3d;
-    -moz-transform-style: preserve-3d;
-    -ms-transform-style: preserve-3d;
-    -o-transform-style: preserve-3d;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border-radius: 50%;
+    backface-visibility: hidden;
     transform-style: preserve-3d;
+    display: flex;
+    /* 优化：添加此行，确保 flex 布局生效 */
+    align-items: center;
+    /* 优化：垂直居中 */
+    justify-content: center;
+    /* 优化：水平居中 */
 }
 
 .ih-item.circle.effect .info .info-back {
-opacity: 1;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
-width: 100%;
-height: 100%;
-background: #333333;
+    background: #333;
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .ih-item.circle.effect .info h3 {
-color: #fff;
+    color: #fff;
     text-transform: uppercase;
-position: relative;
     letter-spacing: 2px;
     font-size: 22px;
-margin: 0 30px;
-padding: 55px 0 0 0;
-height: 110px;
+    margin: 0 30px;
+    padding: 0;
     text-shadow: 0 0 1px white, 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .ih-item.circle.effect .info p {
-color: #bbb;
-padding: 10px 5px;
+    color: #bbb;
     font-style: italic;
-margin: 0 30px;
     font-size: 12px;
+    margin: 0 30px;
+    padding: 10px 5px 0;
     border-top: 1px solid rgba(255, 255, 255, 0.5);
 }
 
+/* 翻转动画 */
 .ih-item.circle.effect.bottom_to_top .img {
-    -webkit-transform-origin: 50% 0;
-    -moz-transform-origin: 50% 0;
-    -ms-transform-origin: 50% 0;
-    -o-transform-origin: 50% 0;
     transform-origin: 50% 0;
 }
 
 .ih-item.circle.effect.bottom_to_top a:hover .img {
-    -webkit-transform: rotate3d(1, 0, 0, 180deg);
-    -moz-transform: rotate3d(1, 0, 0, 180deg);
-    -ms-transform: rotate3d(1, 0, 0, 180deg);
-    -o-transform: rotate3d(1, 0, 0, 180deg);
-transform: rotate3d(1, 0, 0, 180deg);
+    transform: rotate3d(1, 0, 0, 180deg);
 }
 
 .ih-item.circle.effect.top_to_bottom .img {
-    -webkit-transform-origin: 50% 100%;
-    -moz-transform-origin: 50% 100%;
-    -ms-transform-origin: 50% 100%;
-    -o-transform-origin: 50% 100%;
     transform-origin: 50% 100%;
 }
 
 .ih-item.circle.effect.top_to_bottom a:hover .img {
-    -webkit-transform: rotate3d(1, 0, 0, -180deg);
-    -moz-transform: rotate3d(1, 0, 0, -180deg);
-    -ms-transform: rotate3d(1, 0, 0, -180deg);
-    -o-transform: rotate3d(1, 0, 0, -180deg);
-transform: rotate3d(1, 0, 0, -180deg);
+    transform: rotate3d(1, 0, 0, -180deg);
 }
 
 .ih-item.circle.effect.left_to_right .img {
-    -webkit-transform-origin: 100% 50%;
-    -moz-transform-origin: 100% 50%;
-    -ms-transform-origin: 100% 50%;
-    -o-transform-origin: 100% 50%;
     transform-origin: 100% 50%;
 }
 
 .ih-item.circle.effect.left_to_right a:hover .img {
-    -webkit-transform: rotate3d(0, 1, 0, 180deg);
-    -moz-transform: rotate3d(0, 1, 0, 180deg);
-    -ms-transform: rotate3d(0, 1, 0, 180deg);
-    -o-transform: rotate3d(0, 1, 0, 180deg);
-transform: rotate3d(0, 1, 0, 180deg);
+    transform: rotate3d(0, 1, 0, 180deg);
 }
 
 .ih-item.circle.effect.right_to_left .img {
-    -webkit-transform-origin: 0% 50%;
-    -moz-transform-origin: 0% 50%;
-    -ms-transform-origin: 0% 50%;
-    -o-transform-origin: 0% 50%;
     transform-origin: 0% 50%;
 }
 
 .ih-item.circle.effect.right_to_left a:hover .img {
-    -webkit-transform: rotate3d(0, 1, 0, -180deg);
-    -moz-transform: rotate3d(0, 1, 0, -180deg);
-    -ms-transform: rotate3d(0, 1, 0, -180deg);
-    -o-transform: rotate3d(0, 1, 0, -180deg);
-transform: rotate3d(0, 1, 0, -180deg);
+    transform: rotate3d(0, 1, 0, -180deg);
 }
 
+/* 链接样式 */
 .ih-item a {
     color: #333;
+    text-decoration: none;
+    display: block;
 }
 
 .ih-item a:hover {
     text-decoration: none;
 }
 
-.ih-item img {
-width: 100%;
-height: 100%;
-}
+@media (max-width: 768px) {
+    .ih-item.circle {
+        width: 150px;
+        height: 150px;
+    }
 
-.ih-item.circle {
-position: relative;
-width: 220px;
-height: 220px;
-    border-radius: 50%;
-}
+    .ih-item.circle.effect .img,
+    .ih-item.circle.effect .img:before {
+        width: 150px;
+        height: 150px;
+    }
 
-.ih-item.circle .img {
-position: relative;
-width: 220px;
-height: 220px;
-    border-radius: 50%;
-}
-
-.ih-item.circle .img:before {
-position: absolute;
-display: block;
-content: '';
-width: 100%;
-height: 100%;
-    border-radius: 50%;
-    box-shadow: inset 0 0 0 16px rgba(255, 255, 255, 0.6), 0 1px 2px rgba(0, 0, 0, 0.3);
-    -webkit-transition: all 0.35s ease-in-out;
-    -moz-transition: all 0.35s ease-in-out;
-transition: all 0.35s ease-in-out;
-}
-
-.ih-item.circle .img img {
-    border-radius: 50%;
-}
-
-.ih-item.circle .info {
-position: absolute;
-top: 0;
-bottom: 0;
-left: 0;
-right: 0;
-    text-align: center;
-    border-radius: 50%;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
+    .ih-item.circle.effect .info h3 {
+        font-size: 18px;
+    }
 }
