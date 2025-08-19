@@ -22,7 +22,13 @@ const req = https.request(options, bing_res => {
       img_url.push(img.url);
     });
     var jsonpStr = "getBingImages(" + JSON.stringify(img_url) + ")";
-    fs.writeFile('./json/images.json', jsonpStr, (err) => {
+    
+    // 使用 __dirname 确保路径正确
+    const path = require('path');
+    const imagesJsonPath = path.join(__dirname, '..', 'json', 'images.json');
+    fs.writeFile(imagesJsonPath, jsonpStr, (err) => {
+
+      // fs.writeFile('./json/images.json', jsonpStr, (err) => {
       if (err) {
         throw err;
       }

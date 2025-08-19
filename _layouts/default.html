@@ -35,9 +35,13 @@
 
   {% include external.html %}
   
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>     <!-- 引入 jQuery -->
   
-  <script type="text/javascript" src="./json/images.json?cb=getBingImages"></script>    <!-- 使用 GitHub Action 来获取 Bing 壁纸，使用 JSONP 获取 Bing 壁纸 URL 文件 -->
+  <!-- 三种方法设置背景图：1.固定静态图  2.随机替换背景图片  3.使用 JSONP 获取 Bing 壁纸 -->
   <!--<script type="text/javascript" src="../js/changebg.js"> </script>--> <!-- 实现随机替换背景图片 -->
+  <script type="text/javascript" src="/js/main.js"></script>
+  <script type="text/javascript" src="/json/images.json?cb=getBingImages"></script>    <!-- 使用 GitHub Action 来获取 Bing 壁纸，使用 JSONP 获取 Bing 壁纸 URL 文件 -->
+  
 </body>
 
 </html>

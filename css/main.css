@@ -531,7 +531,8 @@ img::-moz-selection {
     width: 100%;
     max-width: none;
     height: 100%;
-    background: url(/images/background-cover.jpg) top left no-repeat #666666;
+    /* background: url(/images/background-cover.jpg) top left no-repeat #666666; */
+    /* background: url(https://ipgeo-bingpic.hf.space) top left no-repeat #666666;           Bing每日一图API */
     background-size: cover; }
 
   .panel-cover--collapsed {
