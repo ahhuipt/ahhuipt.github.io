@@ -4,7 +4,6 @@
 (function() {
   // === 配置区 (请在此处修改您的图片URL) ===
   const backgroundImages = [
-    "https://i.loli.net/2019/03/12/5c87360351427.jpg",
     "https://i.loli.net/2019/03/12/5c873603b8741.jpg",
     "https://i.loli.net/2019/03/12/5c873603ce3b7.jpg",
     "https://i.loli.net/2019/03/12/5c873603cfa76.jpg",
