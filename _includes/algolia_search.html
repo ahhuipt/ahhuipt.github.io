@@ -1,19 +1,119 @@
 <div id="docsearch" class="docsearch-container" style="margin-bottom: 20px;"></div>
 
 <style>
+  /* 基础容器样式 */
   .docsearch-container {
     max-width: 100%;
   }
+
+  /* 搜索框整体样式 */
   .docsearch {
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   }
-  .docsearch-input-container {
-    width: 100% !important;
-  }
+
+  /* 搜索输入框样式 */
   .docsearch-input {
-    width: 100% !important;
+    border: 1px solid #d9d9d9;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 16px;
+    color: #333;
+    background-color: #ffffff;
+    transition: all 0.2s ease;
+  }
+
+  /* 输入框聚焦状态 */
+  .docsearch-input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+  }
+
+  /* 搜索结果面板样式 */
+  .docsearch-modal {
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  /* 搜索结果头部 */
+  .docsearch-header {
+    background-color: #007bff;
+    color: white;
+    padding: 16px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+
+  /* 搜索结果列表 */
+  .docsearch-results {
+    max-height: 400px;
+    overflow-y: auto;
+    background-color: #ffffff;
+  }
+
+  /* 单个搜索结果项 */
+  .docsearch-result {
+    padding: 12px 16px;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.2s ease;
+  }
+
+  /* 搜索结果项悬停效果 */
+  .docsearch-result:hover {
+    background-color: #f8f9fa;
+    cursor: pointer;
+  }
+
+  /* 搜索结果标题 */
+  .docsearch-result-title {
+    font-weight: 600;
+    color: #007bff;
+    margin: 0;
+    font-size: 16px;
+  }
+
+  /* 搜索结果URL */
+  .docsearch-result-url {
+    color: #6c757d;
+    font-size: 14px;
+    margin: 4px 0;
+  }
+
+  /* 搜索结果摘要 */
+  .docsearch-result-excerpt {
+    color: #6c757d;
+    font-size: 14px;
+    margin: 4px 0;
+    line-height: 1.4;
+  }
+
+  /* 搜索结果中的高亮文本 */
+  .docsearch-highlight {
+    background-color: #fff3cd;
+    color: #856404;
+    padding: 0 2px;
+    border-radius: 2px;
+  }
+
+  /* 搜索结果中的匹配文本 */
+  .docsearch-hit-content {
+    color: #495057;
+  }
+
+  /* 搜索框内的按钮 */
+  .docsearch-button {
+    color: #6c757d;
+  }
+
+  /* 搜索框内的关闭按钮 */
+  .docsearch-close {
+    color: #6c757d;
   }
 </style>
 
@@ -26,18 +126,48 @@
       appId: '{{ site.algolia.application_id }}',
       indexName: '{{ site.algolia.index_name }}',
       apiKey: '{{ site.algolia.search_only_api_key }}',
+      // 修复 URL 路径问题
       transformItems: function(items) {
         return items.map(function(item) {
-          // 修复 URL 路径问题
           item.url = item.url.replace('/ahhuipt.github.io', '');
           return item;
         });
       },
+      // 自定义搜索框文本
       translations: {
         placeholder: '搜索文章...',
         button: {
           buttonText: '搜索',
           buttonAriaLabel: '搜索'
+        },
+        modal: {
+          searchBox: {
+            resetButtonTitle: '清除',
+            resetButtonAriaLabel: '清除',
+            cancelButtonText: '取消',
+            cancelButtonAriaLabel: '取消'
+          },
+          startScreen: {
+            recentSearchesTitle: '最近搜索',
+            noRecentSearchesText: '没有最近搜索',
+            saveRecentSearchButtonAriaLabel: '保存此搜索'
+          },
+          errorScreen: {
+            titleText: '无法获取结果',
+            helpText: '您可能需要检查您的网络连接'
+          },
+          footer: {
+            selectText: '选择',
+            navigateText: '导航',
+            closeText: '关闭',
+            searchByText: '搜索提供'
+          },
+          noResultsScreen: {
+            noResultsText: '无法找到结果',
+            suggestedQueryText: '您可以尝试查询',
+            reportMissingResultsText: '认为该查询应该有结果？',
+            reportMissingResultsLinkText: '让我们知道'
+          }
         }
       }
     });
