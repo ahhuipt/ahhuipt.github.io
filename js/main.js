@@ -32,34 +32,69 @@ $(document).ready(function () {
   });
 });
 
+
+// getBingImages 函数（淘汰）
+// function getBingImages(imgUrls) {
+//   /**
+//    * 获取Bing壁纸
+//    * 先使用 GitHub Action 每天获取 Bing 壁纸 URL 并更新 images.json 文件
+//    * 然后读取 images.json 文件中的数据
+//    */
+//   const indexName = "bing-image-index";
+//   let index = sessionStorage.getItem(indexName);
+
+//   // 如果没有保存过索引，或者已达到最大数量（7），则重置为0
+//   if (isNaN(index) || index >= imgUrls.length - 1) {
+//     index = 0;
+//   } else {
+//     index++;
+//   }
+
+//   // 获取当前要显示的图片URL
+//   const imageUrl = imgUrls[index];
+//   const fullUrl = "https://www.cn.bing.com  " + imageUrl;
+
+//   // 设置背景图
+//   const backgroundArea = document.getElementById('BackgroundArea');
+//   if (backgroundArea) {
+//     backgroundArea.style.background = `url('${fullUrl}') center center no-repeat #666`;
+//     backgroundArea.style.backgroundSize = "cover";
+//   }
+
+//   // 保存下一个索引，用于下次访问
+//   sessionStorage.setItem(indexName, index);
+// }
+
+
+// getBingImages 函数优化版
 function getBingImages(imgUrls) {
   /**
    * 获取Bing壁纸
-   * 先使用 GitHub Action 每天获取 Bing 壁纸 URL 并更新 images.json 文件
-   * 然后读取 images.json 文件中的数据
+   * 使用 GitHub Action 每天更新 images.json
+   * 页面刷新时切换下一张背景图
    */
   const indexName = "bing-image-index";
   let index = sessionStorage.getItem(indexName);
 
-  // 如果没有保存过索引，或者已达到最大数量（7），则重置为0
+  // 初始化或递增索引
   if (isNaN(index) || index >= imgUrls.length - 1) {
     index = 0;
   } else {
     index++;
   }
 
-  // 获取当前要显示的图片URL
+   // 获取当前要显示的图片URL
   const imageUrl = imgUrls[index];
-  const fullUrl = "https://www.cn.bing.com" + imageUrl;
+  const fullUrl = `https://www.cn.bing.com${imageUrl}`;
 
-  // 设置背景图
-  const backgroundArea = document.getElementById('BackgroundArea');
-  if (backgroundArea) {
-    backgroundArea.style.background = `url('${fullUrl}') center center no-repeat #666`;
-    backgroundArea.style.backgroundSize = "cover";
+  // 设置背景（根据你的 HTML 选择正确的选择器）
+  const backgroundElement = document.getElementById('BackgroundArea') || document.getElementById('panel');
+  if (backgroundElement) {
+    backgroundElement.style.background = `url('${fullUrl}') center center no-repeat #666`;
+    backgroundElement.style.backgroundSize = "cover";
   }
 
-  // 保存下一个索引，用于下次访问
+  // 保存索引
   sessionStorage.setItem(indexName, index);
 }
 
