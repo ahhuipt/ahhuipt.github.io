@@ -50,7 +50,7 @@ jobs:
       run: |
         # 检查是否有文件被修改
         if ! git diff --quiet; then
-          git add ./assets/json/images.json
+          git add ./json/images.json
           git commit -m "[CI] Auto-update Bing images.json"
         else
           echo "No changes to images.json. Nothing to commit."
