@@ -10,9 +10,9 @@ on:
     - cron: "0 1 * * *"
   # 当向 gh-pages 分支推送或创建 Pull Request 时也触发
   push:
-    branches: [ gh-pages ]
+    branches: [ MAIN ]
   pull_request:
-    branches: [ gh-pages ]
+    branches: [ MAIN ]
 
 jobs:
   build:
@@ -37,7 +37,7 @@ jobs:
 
     # 3. 运行脚本，获取 Bing 壁纸 URL 并更新本地文件
     - name: Update Bing images
-      run: node ./assets/js/bing.js
+      run: node ./js/bing.js
 
     # 4. 配置 Git 提交者信息
     - name: Configure Git user

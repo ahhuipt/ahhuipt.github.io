@@ -12,7 +12,7 @@ const BING_API_CONFIG = {
   timeout: 5000
 };
 
-const OUTPUT_DIR = './assets/json';
+const OUTPUT_DIR = './json';
 const OUTPUT_FILE = 'images.json';
 const OUTPUT_PATH = path.join(OUTPUT_DIR, OUTPUT_FILE);
 
