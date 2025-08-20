@@ -37,7 +37,7 @@ nav:
 # Algolia 搜索配置
 algolia:
   application_id: D7WUADB45G  # 替换为您的 Application ID
-  index_name: 博文搜索  # 自定义索引名称
+  index_name: 博客搜索  # 自定义索引名称
   search_only_api_key: 218a8d650b6d7586d0fda54456a46be3  # 替换为您的 Search-only API Key
   files:
     - _site/**/*.html
